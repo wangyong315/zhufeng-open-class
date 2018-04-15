@@ -13,27 +13,9 @@ const store = createStore(counter, compose(
     reduxDevtools
 ));
 
-// const store = createStore(counter);
-// const init = store.getState();
-// console.log(init);
-// function listener(){
-//     const current = store.getState();
-//     console.log('现在的机关枪', current);
-// }
-// store.subscribe(listener);
-// // 派发事件
-// store.dispatch({type: "addGun"});
-// store.dispatch({type: "minGun"});
-
-// function render(){
-//     ReactDOM.render(<App store={store} addGUN={addGUN} minGUN={minGUN} addGUNAsync={addGUNAsync} />, document.getElementById("root"));
-// }
-
-// render();
-// store.subscribe(render);
 ReactDOM.render(
     (<Provider store={store} >
-        <App />,
-    </Provider>)
+        <App />
+    </Provider>),
     document.getElementById("root")
 );
