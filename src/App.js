@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Button, List } from 'antd-mobile';
 import { createStore } from 'redux';
-import './App.css';
-
-const Title = (props) => <h1>{props.name}</h1>
 
 class App extends Component {
   constructor(props){
@@ -31,7 +28,6 @@ class App extends Component {
       <div className="App">
         <header className="App-header">
           <Button type="primary" onClick={this.handleAdd}>添加</Button>  
-          <Title name="dadf" />
           <List
             renderHeader={()=>'士兵列表'}
           >
