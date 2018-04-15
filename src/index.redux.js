@@ -21,3 +21,12 @@ export function addGUN(){
 export function minGUN(){
     return { type: MIN_GUN}
 }
+
+// 异步的action
+export function addGUNAsync(){
+    return dispatch => {
+        setTimeout(() => {
+            dispatch(addGUN());
+        }, 2000)
+    }
+}

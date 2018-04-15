@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
-import { counter, addGUN, minGUN } from './index.redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import { counter, addGUN, minGUN, addGUNAsync } from './index.redux';
 import App from './App1';
-const store = createStore(counter);
+const store = createStore(counter, applyMiddleware(thunk));
 
 // const store = createStore(counter);
 // const init = store.getState();
@@ -18,7 +19,7 @@ const store = createStore(counter);
 // store.dispatch({type: "minGun"});
 
 function render(){
-    ReactDOM.render(<App store={store} addGUN={addGUN} minGUN={minGUN} />, document.getElementById("root"));
+    ReactDOM.render(<App store={store} addGUN={addGUN} minGUN={minGUN} addGUNAsync={addGUNAsync} />, document.getElementById("root"));
 }
 
 render();
