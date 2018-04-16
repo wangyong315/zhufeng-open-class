@@ -8,3 +8,6 @@
 - 把store.dispatch方法传递给组件，内部可以调用修改状态
 - Subscribe订阅render函数。每次修改都重新渲染
 - redux相关内容。移动到单独的文件index.redux.js单独管理
+
+### react-router
+- 注意有路径包含关系是  加上 exact
