@@ -11,3 +11,6 @@
 
 ### react-router
 - 注意有路径包含关系是  加上 exact
+
+### react-router 中的 Switch
+- Switch中只命中选中的路由
