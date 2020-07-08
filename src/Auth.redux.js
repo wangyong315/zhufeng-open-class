@@ -22,6 +22,8 @@ export function auth (state = initState, action){
             return { ...state, isAuth: true }
         case LOGOUT:
             return { ...state, isAuth: false }
+        case USER_DATA:
+            return { ...state, ...action.payload }
         default:
             return state
     }

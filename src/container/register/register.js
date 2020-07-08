@@ -8,6 +8,9 @@ import {
     Radio,
 } from 'antd-mobile';
 import Logo from '../../component/logo/logo';
+
+const RadioItem = Radio.RadioItem;
+
 class Register extends React.Component{
     constructor(props){
         super(props);
@@ -19,7 +22,6 @@ class Register extends React.Component{
         this.props.history.push('/register')
     }
     render(){
-        const RadioItem = Radio.RadioItem;
         return (
             <div>
                 <Logo />
