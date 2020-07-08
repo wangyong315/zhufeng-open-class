@@ -15,7 +15,7 @@ import './config';
 
 import Login from './container/login/login';
 import Register from './container/register/register';
-// import Auth from './Auth';
+import Auth from './Auth';
 // import Dashboard from './Dashboard';
 
 const reduxDevtools = window.devToolsExtension ? window.devToolsExtension() : ()=>{};
@@ -28,7 +28,8 @@ ReactDOM.render(
     (<Provider store={store} >
         <BrowserRouter>
             <div>
-                <AuthRoute></AuthRoute>
+                {/* <AuthRoute></AuthRoute> */}
+                <Auth></Auth>
                 <Route path="/login" component={Login}></Route>
                 <Route path="/register" component={Register}></Route>
             </div>
