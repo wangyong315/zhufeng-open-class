@@ -19,6 +19,12 @@ import Auth from './Auth';
 import AuthRoute from './component/authroute'
 // import Dashboard from './Dashboard';
 
+function Boss(params) {
+    return (
+        <h1>khhjjhkk</h1>
+    )
+}
+
 const reduxDevtools = window.devToolsExtension ? window.devToolsExtension() : f=>f;
 const store = createStore(reducers, compose(
     applyMiddleware(thunk),
@@ -30,6 +36,7 @@ ReactDOM.render(
         <BrowserRouter>
             <div>
                 <AuthRoute></AuthRoute>
+                <Route path="/boss" component={Boss}></Route>
                 <Route path="/login" component={Login}></Route>
                 <Route path="/register" component={Register}></Route>
             </div>
