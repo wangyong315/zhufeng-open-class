@@ -17,6 +17,8 @@ import Login from './container/login/login';
 import Register from './container/register/register';
 import Auth from './Auth';
 import AuthRoute from './component/authroute'
+import './index.css'
+
 // import Dashboard from './Dashboard';
 
 function Boss(params) {
