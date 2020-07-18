@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 import { register } from '../../redux/user.redux';
 import Logo from '../../component/logo/logo';
 
-
 const RadioItem = Radio.RadioItem;
 
 @connect(
