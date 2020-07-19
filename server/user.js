@@ -5,6 +5,7 @@ const User = model.getModel('user')
 const utils = require('utility')
 
 Router.get('/list', function (req, res) {
+  // User.remove({}, function (err, d) {})
   User.find({}, function (err, doc) {
     return res.json(doc)
   })
@@ -32,7 +33,7 @@ Router.get('/info', function (req, res) {
 })
 
 function md5Pwd(pwd) {
-  const salt = 'wangyong'
+  const salt = '*（&……@%&$#**_QPjk_wangyong'
   return utils.md5(utils.md5(salt + pwd))
 }
 
