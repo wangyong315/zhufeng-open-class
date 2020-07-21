@@ -1,9 +1,8 @@
 import React from 'react';
-import { NavBar, Icon } from 'antd-mobile';
-import Logo from '../../component/logo/logo';
+import { NavBar, InputItem, TextareaItem } from 'antd-mobile';
+import AvatarSelect from '../../component/avatar-selector';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { login } from '../../redux/user.redux';
 
 class BossInfo extends React.Component{
     constructor(props){
@@ -18,10 +17,37 @@ class BossInfo extends React.Component{
         this.props.history.push('/register')
     }
 
+    handleChange(key, val){
+        this.setState({[key]: val})
+    }
+
     render(){
         return (
             <div>
                 <NavBar mode="dark">Boss完善信息页面</NavBar>
+                <AvatarSelect></AvatarSelect>
+                <InputItem 
+                    onChange={v => this.handleChange('title', v)}
+                >
+                    招聘职位
+                </InputItem>
+                <InputItem 
+                    onChange={v => this.handleChange('company', v)}
+                >
+                    公司名称
+                </InputItem>
+                <InputItem 
+                    onChange={v => this.handleChange('money', v)}
+                >
+                    薪资范围
+                </InputItem>
+                <TextareaItem 
+                    onChange={v => this.handleChange('desc', v)}
+                    rows={3}
+                    autoHeight
+                    title="职位要求"
+                >
+                </TextareaItem>
             </div>
         )
     }
