@@ -40,6 +40,7 @@ function errorMsg(msg) {
 }
 
 function loginSuccess(data) {
+  console.log('data9999', data);
   return {payload: data, type: LOGIN_SUCCESS}
 }
 
@@ -75,7 +76,8 @@ export function login({user, pwd}) {
     axios.post('/user/login', {user, pwd})
       .then(res => {
         if (res.status === 200 && res.data.code === 0) {
-          dispatch(loginSuccess({user, pwd}))
+          const { type } = res.data.data
+          dispatch(loginSuccess({user, type, pwd}))
         } else {
           dispatch(errorMsg(res.data.msg))
         }

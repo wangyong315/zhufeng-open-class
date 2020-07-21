@@ -13,8 +13,9 @@ import {
 import reducers from './reducer';
 import './config';
 
-import Login from './container/login/login';
-import Register from './container/register/register';
+import Login from './container/login';
+import Register from './container/register';
+import BossInfo from './container/bossinfo';
 import Auth from './Auth';
 import AuthRoute from './component/authroute'
 import './index.css'
@@ -38,6 +39,7 @@ ReactDOM.render(
         <BrowserRouter>
             <div>
                 <AuthRoute></AuthRoute>
+                <Route path="/bossinfo" component={BossInfo}></Route>
                 <Route path="/boss" component={Boss}></Route>
                 <Route path="/login" component={Login}></Route>
                 <Route path="/register" component={Register}></Route>
