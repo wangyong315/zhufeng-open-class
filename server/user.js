@@ -3,6 +3,7 @@ const Router = express.Router()
 const model = require('./model')
 const User = model.getModel('user')
 const utils = require('utility')
+const { json } = require('body-parser')
 
 const _filter = {pwd: 0, __v: 0}
 
@@ -41,6 +42,14 @@ Router.post('/register', function (req, res) {
     })
   })
 })
+
+Router.post('/update', function (req, res) {
+  const { userid } = req.cookies
+  if (!userid) {
+    return json.dump({ code: 0 })
+  }
+})
+
 
 Router.get('/info', function (req, res) {
   // 用户有没有cookie
