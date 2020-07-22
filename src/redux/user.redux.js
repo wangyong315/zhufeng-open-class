@@ -66,6 +66,7 @@ export function login({user, pwd}) {
   return dispatch => {
     axios.post('/user/login', {user, pwd})
       .then(res => {
+        console.log('resa', res);
         if (res.status === 200 && res.data.code === 0) {
           const { type } = res.data.data
           dispatch(authSuccess({user, type, pwd}))

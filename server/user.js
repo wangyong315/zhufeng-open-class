@@ -16,6 +16,8 @@ Router.get('/list', function (req, res) {
 
 Router.post('/login', function (req, res) {
   const {user, pwd} = req.body
+  console.log('user', user);
+  console.log('pwd', pwd);
   User.findOne({user, pwd: md5Pwd(pwd)}, _filter, function (err, doc) {
     if (!doc) {
       return res.json({code: 1, msg: '用户名或者密码错误'})
@@ -50,6 +52,7 @@ Router.post('/update', function (req, res) {
   }
   const body = req.body
   User.findByIdAndUpdate(userid, body, function (err, doc) {
+    console.log('doc', doc);
     const data = Object.assign({}, {
       user: doc.user,
       type: doc.type,
