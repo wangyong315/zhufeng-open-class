@@ -20,12 +20,15 @@ class BossInfo extends React.Component{
     handleChange(key, val){
         this.setState({[key]: val})
     }
+    selectAvatar = (imgname) => {
+        this.setState({avatar: imgname})
+    }
 
     render(){
         return (
             <div>
                 <NavBar mode="dark">Boss完善信息页面</NavBar>
-                <AvatarSelect></AvatarSelect>
+                <AvatarSelect selectAvatar={this.selectAvatar}></AvatarSelect>
                 <InputItem 
                     onChange={v => this.handleChange('title', v)}
                 >
