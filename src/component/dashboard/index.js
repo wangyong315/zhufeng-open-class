@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { NavBar} from 'antd-mobile'
+import NavLinkBar from '../navlink'
 
 function Boss() {
     return (
@@ -76,8 +77,7 @@ class Dashboard extends React.Component{
                         navList.find(val => val.path === pathname).title
                     }
                 </NavBar>
-                <h1>header</h1>
-                <h1>footer</h1>
+                <NavLinkBar data={navList}></NavLinkBar>
             </div>
         )
     }
