@@ -17,19 +17,11 @@ import Login from './container/login';
 import Register from './container/register';
 import BossInfo from './container/bossinfo';
 import GeniusInfo from './container/geniusinfo';
-import Auth from './Auth';
 import AuthRoute from './component/authroute'
+import Dashboard from './component/dashboard';
 import './index.css'
 
-// import Dashboard from './Dashboard';
-
 function Boss(params) {
-    return (
-        <h1>khhjjhkk</h1>
-    )
-}
-
-function Dashboard(params) {
     return (
         <h1>khhjjhkk</h1>
     )
