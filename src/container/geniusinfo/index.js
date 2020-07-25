@@ -13,13 +13,9 @@ class GeniusInfo extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            user: '',
-            pwd: '',
+            title: '',
+            desc: '',
         }
-    }
-    register = () => {
-        console.log(this.props);
-        this.props.history.push('/register')
     }
 
     handleChange(key, val){
@@ -40,13 +36,13 @@ class GeniusInfo extends React.Component{
                 <InputItem 
                     onChange={v => this.handleChange('title', v)}
                 >
-                    招聘职位
+                    求职岗位
                 </InputItem>
                 <TextareaItem 
                     onChange={v => this.handleChange('desc', v)}
                     rows={3}
                     autoHeight
-                    title="个人简介"
+                    title="个人见解"
                 >
                 </TextareaItem>
                 <Button 

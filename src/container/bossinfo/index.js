@@ -13,13 +13,11 @@ class BossInfo extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            user: '',
-            pwd: '',
+            title: '',
+            desc: '',
+            company: '',
+            money: '',
         }
-    }
-    register = () => {
-        console.log(this.props);
-        this.props.history.push('/register')
     }
 
     handleChange(key, val){

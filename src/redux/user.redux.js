@@ -27,7 +27,8 @@ export function user(state = initState, action) {
   }
 }
 
-function authSuccess(data) {
+function authSuccess(obj) {
+  const {pwd, ...data} = obj
   return {payload: data, type: AUTH_SUCCESS}
 }
 
