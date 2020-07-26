@@ -44,13 +44,13 @@ class Dashboard extends React.Component{
                 icon: 'boss',
                 title: 'boss',
                 component: Boss,
-                hide: user.type == 'genius'
+                hide: user.type === 'genius'
             },
             {
                 path: '/genius',
                 text: 'genius',
-                icon: 'boss',
-                title: 'boss',
+                icon: 'genius',
+                title: 'genius',
                 component: Genius,
                 hide: user.type == 'genius'
             },
@@ -64,7 +64,7 @@ class Dashboard extends React.Component{
             {
                 path: '/me',
                 text: '我',
-                icon: 'user',
+                icon: 'me',
                 title: '个人中心',
                 component: User,
             }
