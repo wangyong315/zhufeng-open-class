@@ -21,11 +21,6 @@ import AuthRoute from './component/authroute'
 import Dashboard from './component/dashboard';
 import './index.css'
 
-function Boss(params) {
-    return (
-        <h1>khhjjhkk</h1>
-    )
-}
 
 const reduxDevtools = window.devToolsExtension ? window.devToolsExtension() : f=>f;
 const store = createStore(reducers, compose(
@@ -41,7 +36,6 @@ ReactDOM.render(
                 <Switch>
                     <Route path="/geniusinfo" component={GeniusInfo}></Route>
                     <Route path="/bossinfo" component={BossInfo}></Route>
-                    <Route path="/boss" component={Boss}></Route>
                     <Route path="/login" component={Login}></Route>
                     <Route path="/register" component={Register}></Route>
                     <Route component={Dashboard}></Route>

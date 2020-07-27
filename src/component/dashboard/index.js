@@ -2,12 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { NavBar} from 'antd-mobile'
 import NavLinkBar from '../navlink'
+import { Switch, Route } from 'react-router-dom'
+import Boss from '../boss'
 
-function Boss() {
-    return (
-        <h2>boss首页</h2>
-    )
-}
 
 function Genius() {
     return (
@@ -31,9 +28,6 @@ function User() {
     state => state
 )
 class Dashboard extends React.Component{
-    constructor(props){
-        super(props)
-    }
     render(){
         const user = this.props.user
         const {pathname} = this.props.location
@@ -44,7 +38,7 @@ class Dashboard extends React.Component{
                 icon: 'boss',
                 title: 'boss',
                 component: Boss,
-                hide: user.type === 'genius'
+                hide: user.type === 'boss'
             },
             {
                 path: '/genius',
@@ -52,7 +46,7 @@ class Dashboard extends React.Component{
                 icon: 'genius',
                 title: 'genius',
                 component: Genius,
-                hide: user.type == 'genius'
+                hide: user.type === 'genius'
             },
             {
                 path: '/msg',
@@ -72,12 +66,21 @@ class Dashboard extends React.Component{
 
         return (
             <div>
-                <NavBar mode="dark">
+                <NavBar className="fixed-header" mode="dark">
                     {
                         navList.find(val => val.path === pathname).title
                     }
                 </NavBar>
-                <NavLinkBar data={navList}></NavLinkBar>
+                <div>
+                    <Switch>
+                        {
+                            navList.map(v => (
+                                <Route key={v.path} path={v.path} component={v.component} />
+                            ))
+                        }
+                    </Switch>
+                </div>
+                <NavLinkBar data={navList} />
             </div>
         )
     }
