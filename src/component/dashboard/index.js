@@ -4,13 +4,7 @@ import { NavBar} from 'antd-mobile'
 import NavLinkBar from '../navlink'
 import { Switch, Route } from 'react-router-dom'
 import Boss from '../boss'
-
-
-function Genius() {
-    return (
-        <h2>牛人</h2>
-    )
-}
+import Genius from '../genius'
 
 function Msg() {
     return (
