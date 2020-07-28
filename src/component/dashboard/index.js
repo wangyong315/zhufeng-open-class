@@ -5,14 +5,9 @@ import NavLinkBar from '../navlink'
 import { Switch, Route } from 'react-router-dom'
 import Boss from '../boss'
 import Genius from '../genius'
+import User from '../user'
 
 function Msg() {
-    return (
-        <h2>消息首页</h2>
-    )
-}
-
-function User() {
     return (
         <h2>消息首页</h2>
     )
