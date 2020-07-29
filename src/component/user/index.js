@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { Result } from 'antd-mobile'
-import { getUserList } from '../../redux/chatuser.redux'
+import { Result, List } from 'antd-mobile'
+import { Brief } from 'antd-mobile/lib/list/ListItem';
+
+const { Item } = List
 
 @connect(
   state => state.user,
@@ -9,13 +11,28 @@ import { getUserList } from '../../redux/chatuser.redux'
 class User extends React.Component{
 
   render (){
-    const { user } = this.props
+    const { user, type, company, title, desc } = this.props
     console.log('this.props', this.props);
     return user ? (
-      <Result
-        img={<img alt="avatar" src={require(`../img/${this.props.avatar}.jpg`)} />}
-        title={this.props.user}
-      />
+      <div>
+        <Result
+          img={<img
+              alt="avatar"
+              style={{width: 90}}
+              src={require(`../img/${this.props.avatar}.jpg`)}
+            />
+          }
+          title={user}
+          message={type === 'boss' ? company : null }
+        />
+        <List renderHeader={() => '简介'}>
+          <Item>
+            {title}
+            <Brief>{desc}</Brief>
+          </Item>
+        </List>
+        <p>用户中心</p>
+      </div>
     ) : null;
   }
 }

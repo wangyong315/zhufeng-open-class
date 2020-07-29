@@ -23,8 +23,8 @@ class AuthRoute extends React.Component{
               console.log('res.data', res.data);
               if (res.data.code === 1) {
                 // 有登录信息的
-              } else {
                 this.props.loadData(res.data.data)
+              } else {
                 this.props.history.push('/login')
               }
           }
