@@ -1,17 +1,29 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { Result, List } from 'antd-mobile'
-import { Brief } from 'antd-mobile/lib/list/ListItem';
+import { Result, List, WhiteSpace } from 'antd-mobile'
+import browserCookie from 'browser-cookies'
 
 const { Item } = List
+const { Brief } = Item
 
 @connect(
   state => state.user,
 )
-class User extends React.Component{
+class User extends React.Component {
+
+  logout = () => {
+    browserCookie.erase('userid')
+  }
 
   render (){
-    const { user, type, company, title, desc } = this.props
+    const {
+      user, 
+      type, 
+      company, 
+      title, 
+      desc, 
+      money
+    } = this.props
     console.log('this.props', this.props);
     return user ? (
       <div>
@@ -26,12 +38,19 @@ class User extends React.Component{
           message={type === 'boss' ? company : null }
         />
         <List renderHeader={() => '简介'}>
-          <Item>
+          <Item multipleLine>
             {title}
-            <Brief>{desc}</Brief>
+            {
+              desc.split('\n').map(v=> <Brief key={v}>{v}</Brief>)
+            }
+            {money ? <Brief>薪资：{money}</Brief> : null}
           </Item>
         </List>
-        <p>用户中心</p>
+        <WhiteSpace />
+        <List>
+          <Item onClick={this.logout}>退出登录</Item>
+          <div onClick={this.logout}>退出登录</div>
+        </List>
       </div>
     ) : null;
   }
