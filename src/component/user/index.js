@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux'
 import { Result, List, WhiteSpace, Modal } from 'antd-mobile'
 import browserCookie from 'browser-cookies'
+import { Redirect } from 'react-router-dom'
+import { logoutSubmit } from '../../redux/user.redux'
 
 const { Item } = List
 const { Brief } = Item
@@ -9,6 +11,7 @@ const { alert } = Modal
 
 @connect(
   state => state.user,
+  {logoutSubmit}
 )
 class User extends React.Component {
 
@@ -17,7 +20,7 @@ class User extends React.Component {
       {text: 'cancle', onPress: () => console.log('cancle')},
       {text: 'Ok', onPress: () => {
         browserCookie.erase('userid')
-        window.location.href = window.location.href
+        this.props.logoutSubmit()
       }}
     ])
   }
@@ -29,7 +32,8 @@ class User extends React.Component {
       company, 
       title, 
       desc, 
-      money
+      money,
+      redirectTo,
     } = this.props
     console.log('this.props', this.props);
     return user ? (
@@ -47,9 +51,7 @@ class User extends React.Component {
         <List renderHeader={() => '简介'}>
           <Item multipleLine>
             {title}
-            {
-              desc.split('\n').map(v=> <Brief key={v}>{v}</Brief>)
-            }
+            { desc.split('\n').map(v=> <Brief key={v}>{v}</Brief>) }
             {money ? <Brief>薪资：{money}</Brief> : null}
           </Item>
         </List>
@@ -59,7 +61,7 @@ class User extends React.Component {
           <div onClick={this.logout}>退出登录</div>
         </List>
       </div>
-    ) : null;
+    ) : <Redirect to={redirectTo} />;
   }
 }
 

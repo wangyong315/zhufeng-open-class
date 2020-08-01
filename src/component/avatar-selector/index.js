@@ -11,7 +11,6 @@ class AvatarSelect extends React.Component{
     state = {}
 
     render(){
-        console.log('tsistat', this.state);
         const avatarList = 'app1,app2,app3,app4,app5,app6,app7'
                             .split(',')
                             .map(v => ({

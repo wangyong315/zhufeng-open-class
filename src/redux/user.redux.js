@@ -3,6 +3,7 @@ import { getRedirectPath } from '../util';
 
 const ERROR_MSG = 'ERROR_MSG'
 const LOAD_DATA = 'LOAD_DATA'
+const LOG_OUT = 'LOG_OUT'
 const AUTH_SUCCESS = 'AUTH_SUCCESS'
 
 const initState = {
@@ -20,10 +21,12 @@ export function user(state = initState, action) {
       return { ...state, msg:'', redirectTo: getRedirectPath(action.payload), ...action.payload }
     case LOAD_DATA:
       return { ...state, ...action.payload }
+    case LOG_OUT:
+      return { ...initState, redirectTo: '/login' }
     case ERROR_MSG:
       return { ...state, msg: action.msg, isAuth: false }
     default:
-      return initState
+      return state
   }
 }
 
@@ -51,7 +54,7 @@ export function register({user, pwd, repeatpwd, type}) {
   return dispatch => {
     axios.post('/user/register', {user, pwd, repeatpwd, type})
       .then(res => {
-        if (res.status === 200 && res.data.code === 0) {
+        if (res.status === 200 && res.data.code === 1) {
           dispatch(authSuccess({user, pwd, type}))
         } else {
           dispatch(errorMsg(res.data.msg))
@@ -68,7 +71,7 @@ export function login({user, pwd}) {
     axios.post('/user/login', {user, pwd})
       .then(res => {
         console.log('resa', res);
-        if (res.status === 200 && res.data.code === 0) {
+        if (res.status === 200 && res.data.code === 1) {
           const { type } = res.data.data
           dispatch(authSuccess({user, type, pwd}))
         } else {
@@ -82,11 +85,15 @@ export function update(data) {
   return dispatch => {
     axios.post('/user/update', data)
       .then(res => {
-        if (res.status === 200 && res.data.code === 0) {
+        if (res.status === 200 && res.data.code === 1) {
           dispatch(authSuccess(res.data.data))
         } else {
           dispatch(errorMsg(res.data.msg))
         }
       })
   }
+}
+
+export function logoutSubmit() {
+  return { type: LOG_OUT }
 }
