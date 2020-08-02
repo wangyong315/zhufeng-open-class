@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
     List,
     InputItem,
@@ -10,6 +10,35 @@ import Logo from '../../component/logo/logo';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../redux/user.redux';
+
+// function hello() {
+//     console.log('hello imoce');
+// }
+
+// function WrapHello(fn) {
+//     return function () {
+//         console.log('before say hello');
+//         fn()
+//         console.log('after say hello');
+//     }
+// }
+
+// hello = WrapHello(hello) // 装饰器模式
+
+// hello()
+
+class Hello extends Component{
+    render(){
+        return(
+            <div>
+                hello imoc react     
+            </div>
+        )
+    }
+}
+
+
+
 
 @connect(
     state => state.user,
@@ -45,6 +74,7 @@ class Login extends React.Component{
             <div>
                 {this.props.redirectTo ? <Redirect to={this.props.redirectTo} /> : null}
                 <Logo></Logo>
+                <Hello />
                 <WingBlank>
                     <List>
                         <InputItem 
