@@ -1,10 +1,11 @@
 import React from 'react';
-import { connect } from 'react-redux'
-import { getUserList } from '../../redux/chatuser.redux'
-import { withRouter } from 'react-router-dom'
+import io from 'socket.io-client'
 
-@withRouter
 class Chat extends React.Component{
+
+  componentDidMount(){
+    const socket = io('ws://localhost:9093')
+  }
 
   render (){
     return (
