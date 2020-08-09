@@ -13,10 +13,8 @@ class Chat extends React.Component{
   }
 
   handleSubmit = () => {
-    console.log('sgtasgasd');
-    socket.emit('sendmsg', function (params) {
-      
-    })
+    socket.emit('sendmsg', {text: this.state.text})
+    this.setState({text: '' })
   }
 
   render (){
