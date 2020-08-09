@@ -3,13 +3,21 @@ import { List, InputItem } from 'antd-mobile'
 import io from 'socket.io-client'
 
 const socket = io('ws://localhost:9093')
+
 class Chat extends React.Component{
 
   state = {
-    text: ''
+    text: '',
+    msg: []
   }
 
   componentDidMount(){
+    socket.on('recvmsg',  (data) => {
+      console.log('data', data);
+      this.setState({
+        msg: [...this.state.msg, data.text]
+      })
+    })
   }
 
   handleSubmit = () => {
@@ -20,20 +28,27 @@ class Chat extends React.Component{
   render (){
     console.log('this.state', this.state);
     return (
-      <div className="stick-footer">
-        <List>
-          <InputItem
-            placeholder="请输入"
-            value={this.state.text}
-            onChange={ v => {
-              this.setState({text: v})
-            }}
-            extra={<span onClick={() => this.handleSubmit()}>发送</span>}
-          >
-            信息
-          </InputItem>
-        </List>
-      </div> 
+      <div>
+        {
+          this.state.msg.map(v=> (
+            <p key={v}>{v}</p>
+          ))
+        }
+        <div className="stick-footer">
+          <List>
+            <InputItem
+              placeholder="请输入"
+              value={this.state.text}
+              onChange={ v => {
+                this.setState({text: v})
+              }}
+              extra={<span onClick={() => this.handleSubmit()}>发送</span>}
+            >
+              信息
+            </InputItem>
+          </List>
+        </div> 
+      </div>
     )
   }
 }

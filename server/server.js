@@ -10,6 +10,7 @@ io.on('connection', function (socket) {
     console.log('user login');
     socket.on('sendmsg', function (data) {
         console.log('data', data);
+        io.emit('recvmsg', data)
     })
 })
 
