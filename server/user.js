@@ -2,6 +2,7 @@ const express = require('express')
 const Router = express.Router()
 const model = require('./model')
 const User = model.getModel('user')
+const Chat = model.getModel('chat')
 const utils = require('utility')
 const { json } = require('body-parser')
 
@@ -14,6 +15,17 @@ Router.get('/list', function (req, res) {
     return res.json({ code: 1, data: doc})
   })
 })
+
+Router.get('/getmsglist', function (req, res) {
+  const user = req.cookies.user
+  // '$or': [{from: user}]
+  Chat.find({}, function (err, doc) {
+    if (!doc) {
+      return res.json({ code: 0, msgs: doc})
+    }
+  })
+})
+
 
 Router.post('/login', function (req, res) {
   const {user, pwd} = req.body
